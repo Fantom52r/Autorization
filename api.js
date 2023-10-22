@@ -1,13 +1,17 @@
 const host = 'https://wedev-api.sky.pro/api/v2/todos/'
-const passwarod = '123456'
+let passwarod = prompt("Введите пароль")
 
 export function getTodos() {
     return fetch(host, {
       method: "GET",
       headers: {
-        autorization: passwarod,
+        Authorization: passwarod,
       },
     }).then((response) => {
+
+      if (response.status === 401) {
+        passwarod = prompt("Введите верный пароль");
+      }
       return response.json();
     });
   }
@@ -16,7 +20,7 @@ export function getTodos() {
     return fetch(host + id, {
       method: "DELETE",
       headers: {
-        autorization: passwarod,
+        Authorization: passwarod,
       },
     }).then((response) => {
       return response.json();
@@ -27,7 +31,7 @@ export function getTodos() {
     return fetch(host, {
       method: "POST",
       headers: {
-        autorization: passwarod,
+        Authorization: passwarod,
       },
       body: JSON.stringify({
         text,
