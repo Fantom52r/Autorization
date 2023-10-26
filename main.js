@@ -5,13 +5,12 @@ const buttonElement = document.getElementById("add-button");
 const textInputElement = document.getElementById("text-input");
 
 export let tasks = [];
+export function setTasks(newTodos) {
+  tasks = newTodos
+}
 
-const fetchAndRenderTasks = () => {
-  getTodos().then((responseData) => {
-    tasks = responseData.todos;
-    renderTasks({ tasks, fetchAndRenderTasks });
-    return true;
-  });
+ export const fetchAndRenderTasks = () => {
+  getTodos()
 };
 
 fetchAndRenderTasks();

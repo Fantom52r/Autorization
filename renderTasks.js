@@ -1,8 +1,9 @@
 import { deleteTodo } from "./api.js";
 import { tasks } from "./main.js";
+import { fetchAndRenderTasks } from "./main.js";
 const listElement = document.getElementById("list");
 
-export const renderTasks = ({ fetchAndRenderTasks }) => {
+export const renderTasks = () => {
   const tasksHtml = tasks
     .map((task) => {
       return `
